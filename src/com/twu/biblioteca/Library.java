@@ -15,4 +15,17 @@ public class Library {
         return books;
     }
 
+    public void checkoutBookByCode(String code) {
+        Book book = getBookByCode(code);
+        book.setAvailable(false);
+    }
+
+    public Book getBookByCode(String code) {
+        for (Book book: books){
+            if (book.getCode().equals(code)){
+                return book;
+            }
+        }
+        return null;
+    }
 }

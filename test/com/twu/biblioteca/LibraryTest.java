@@ -6,9 +6,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
 
@@ -18,10 +16,28 @@ public class LibraryTest {
         assertNotNull(lib.getBooks());
     }
 
-    private Library createTestLibrary() {
-        List<Book> books = new LinkedList<Book>();
-        books.add(new Book("Title", "Author", "1985"));
-        return new Library(books);
+    @Test
+    public void testGetBookByCode() {
+        Library lib = createTestLibrary();
+        Book book = lib.getBookByCode("1");
+        assertNotNull(book);
+        book = lib.getBookByCode("a");
+        assertNull(book);
     }
 
+    @Test
+    public void testCheckoutBookByCode() {
+        Library lib = createTestLibrary();
+        Book book = lib.getBookByCode("1");
+        assertTrue(book.isAvailable());
+        lib.checkoutBookByCode("1");
+        assertFalse(book.isAvailable());
+    }
+
+    private Library createTestLibrary() {
+        List<Book> books = new LinkedList<Book>();
+        books.add(new Book("1", "Book 1", "Author", "1985"));
+        books.add(new Book("2", "Book 2", "Author", "1985"));
+        return new Library(books);
+    }
 }
