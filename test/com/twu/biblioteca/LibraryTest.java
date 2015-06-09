@@ -32,6 +32,14 @@ public class LibraryTest {
         assertFalse(book.isAvailable());
     }
 
+    @Test
+    public void testListOnlyAvailableBooks() {
+        Library lib = createTestLibrary();
+        assertEquals(2, lib.getAvailableBooks().size());
+        lib.checkoutBookByCode("1");
+        assertEquals(1, lib.getAvailableBooks().size());
+    }
+
     private Library createTestLibrary() {
         List<Book> books = new LinkedList<Book>();
         books.add(new Book("1", "Book 1", "Author", "1985"));

@@ -52,7 +52,7 @@ public class CommandLineInterface {
 
     public void displayBookList() {
         System.out.println("List of available books:");
-        for (Book book: library.getBooks()) {
+        for (Book book: library.getAvailableBooks()) {
             System.out.println(book);
         }
     }
