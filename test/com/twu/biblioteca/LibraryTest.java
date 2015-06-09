@@ -19,14 +19,14 @@ public class LibraryTest {
     @Test
     public void testGetBookByCode() {
         Library lib = createTestLibrary();
-        Book book = lib.getBookByCode("1");
+        Book book = lib.getAvailableBookByCode("1");
         assertNotNull(book);
     }
 
     @Test
     public void testCheckoutBookByCode() {
         Library lib = createTestLibrary();
-        Book book = lib.getBookByCode("1");
+        Book book = lib.getAvailableBookByCode("1");
         assertTrue(book.isAvailable());
         lib.checkoutBookByCode("1");
         assertFalse(book.isAvailable());
@@ -38,6 +38,25 @@ public class LibraryTest {
         assertEquals(2, lib.getAvailableBooks().size());
         lib.checkoutBookByCode("1");
         assertEquals(1, lib.getAvailableBooks().size());
+    }
+
+    @Test
+    public void testReturnBook() {
+        Library lib = createTestLibrary();
+        Book book = lib.getBookByCode("1");
+        book.setAvailable(false);
+        lib.returnBookByCode("1");
+        assertTrue(book.isAvailable());
+    }
+
+    @Test
+    public void testReturnedBookAppearsOnList() {
+        Library lib = createTestLibrary();
+        Book book = lib.getBookByCode("1");
+        book.setAvailable(false);
+        assertEquals(1, lib.getAvailableBooks().size());
+        lib.returnBookByCode("1");
+        assertEquals(2, lib.getAvailableBooks().size());
     }
 
     private Library createTestLibrary() {

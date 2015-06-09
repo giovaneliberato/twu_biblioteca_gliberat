@@ -17,12 +17,21 @@ public class Library {
     }
 
     public void checkoutBookByCode(String code) {
-        Book book = getBookByCode(code);
+        Book book = getAvailableBookByCode(code);
         book.setAvailable(false);
     }
 
-    public Book getBookByCode(String code) {
+    public Book getAvailableBookByCode(String code) {
         for (Book book: getAvailableBooks()){
+            if (book.getCode().equals(code)){
+                return book;
+            }
+        }
+        throw new Error("That book is not available.");
+    }
+
+    public Book getBookByCode(String code) {
+        for (Book book: books){
             if (book.getCode().equals(code)){
                 return book;
             }
@@ -38,5 +47,10 @@ public class Library {
             }
         }
         return availableBooks;
+    }
+
+    public void returnBookByCode(String code) {
+        Book book = getBookByCode(code);
+        book.setAvailable(true);
     }
 }
