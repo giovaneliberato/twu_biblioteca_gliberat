@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
-import java.util.HashMap;
+
+import java.util.Scanner;
 
 public class CommandLineInterface {
 
@@ -11,8 +12,37 @@ public class CommandLineInterface {
     }
 
     public void start() {
-        System.out.println();
-        displayBookList();
+        System.out.println("Welcome to bangalore public library!");
+        getInputOption();
+    }
+
+
+    public void getInputOption() {
+        while (true){
+            System.out.println();
+            System.out.println("---Menu---");
+            displayOptions();
+            System.out.print("Choose an option: ");
+            Scanner in = new Scanner(System.in);
+            String option = in.nextLine();
+            if (option.equals("1")) {
+                displayBookList();
+            }
+            else if (option.equals("q")) {
+                break;
+            }
+            else {
+                System.out.println("Invalid option, try again.");
+            }
+        }
+
+
+    }
+
+    public void displayOptions() {
+        System.out.println("1 - List Books");
+        System.out.println("q - Quit");
+
     }
 
     public void displayBookList() {
