@@ -13,33 +13,35 @@ public class CommandLineInterface {
 
     public void start() {
         System.out.println("Welcome to bangalore public library!");
-        displayOptions();
         getInputOption();
+    }
+
+
+    public void getInputOption() {
+        while (true){
+            System.out.println();
+            System.out.println("---Menu---");
+            displayOptions();
+            System.out.print("Choose an option: ");
+            Scanner in = new Scanner(System.in);
+            String option = in.nextLine();
+            if (option.equals("1")) {
+                displayBookList();
+            }
+            else if (option.equals("q")) {
+                break;
+            }
+            else {
+                System.out.println("Invalid option, try again.");
+            }
+        }
+
+
     }
 
     public void displayOptions() {
         System.out.println("1 - List Books");
-
-    }
-
-    public void getInputOption() {
-        boolean invalidOption;
-        do {
-            invalidOption = false;
-            System.out.print("Choose an option: ");
-            Scanner in = new Scanner(System.in);
-            int option = in.nextInt();
-            switch (option) {
-                case 1:
-                    displayBookList();
-                    break;
-                default:
-                    invalidOption = true;
-                    System.out.println("Invalid option, try again.");
-                    break;
-            }
-        } while (invalidOption != false);
-
+        System.out.println("q - Quit");
 
     }
 
