@@ -26,6 +26,6 @@ public class Library {
                 return book;
             }
         }
-        return null;
+        throw new Error("Book not found!");
     }
 }

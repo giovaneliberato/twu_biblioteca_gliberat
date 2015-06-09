@@ -16,7 +16,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return title + " - " + author + " - " + publishYear;
+        return "code: " + code + " | " + title + " - " + author + " - " + publishYear;
     }
 
     public String getAuthor() {

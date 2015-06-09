@@ -21,8 +21,6 @@ public class LibraryTest {
         Library lib = createTestLibrary();
         Book book = lib.getBookByCode("1");
         assertNotNull(book);
-        book = lib.getBookByCode("a");
-        assertNull(book);
     }
 
     @Test
