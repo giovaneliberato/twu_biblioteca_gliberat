@@ -11,6 +11,10 @@ public class Book {
         this.publishYear = publishYear;
     }
 
+    public String toString(){
+        return title + " - " + author + " - " + publishYear;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -20,7 +24,6 @@ public class Book {
     }
 
     public String getTitle() {
-
         return title;
     }
 }
