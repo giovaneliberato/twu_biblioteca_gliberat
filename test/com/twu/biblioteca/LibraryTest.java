@@ -1,10 +1,8 @@
 package com.twu.biblioteca;
 
 
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,18 +14,11 @@ public class LibraryTest {
 
     @Test
     public void testGetAllBooks() {
-        Library lib = createStubLibrary();
+        Library lib = createTestLibrary();
         assertNotNull(lib.getBooks());
     }
 
-    @Test
-    public void testGetOptions() {
-        Library lib = createStubLibrary();
-        HashMap<String, String> options = lib.getOptions();
-        assertNotNull(options);
-    }
-
-    private Library createStubLibrary() {
+    private Library createTestLibrary() {
         List<Book> books = new LinkedList<Book>();
         books.add(new Book("Title", "Author", "1985"));
         return new Library(books);
