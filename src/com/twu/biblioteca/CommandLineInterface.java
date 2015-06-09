@@ -45,7 +45,7 @@ public class CommandLineInterface {
 
     public void displayOptions() {
         System.out.println("1 - List Books");
-        System.out.println("2 - Checout Book");
+        System.out.println("2 - Checkout Book");
         System.out.println("q - Quit");
 
     }
@@ -65,7 +65,6 @@ public class CommandLineInterface {
             library.checkoutBookByCode(code);
             System.out.println("Thank You, enjoy the book!");
         } catch (Error e) {
-            System.out.print("System error: ");
             System.out.println(e.getMessage());
         }
     }

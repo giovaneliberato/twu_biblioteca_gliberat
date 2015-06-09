@@ -22,12 +22,12 @@ public class Library {
     }
 
     public Book getBookByCode(String code) {
-        for (Book book: books){
+        for (Book book: getAvailableBooks()){
             if (book.getCode().equals(code)){
                 return book;
             }
         }
-        throw new Error("Book not found!");
+        throw new Error("That book is not available.");
     }
 
     public List<Book> getAvailableBooks() {
