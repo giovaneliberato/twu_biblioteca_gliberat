@@ -17,7 +17,7 @@ public class CommandLineInterface {
     }
 
 
-    public void getInputOption() {
+    private void getInputOption() {
         while (true){
             System.out.println();
             System.out.println("---Menu---");
@@ -32,6 +32,9 @@ public class CommandLineInterface {
             else if (option.equals("2")) {
                 checkoutBook();
             }
+            else if (option.equals("3")) {
+                returnBook();
+            }
             else if (option.equals("q")) {
                 break;
             }
@@ -43,21 +46,22 @@ public class CommandLineInterface {
 
     }
 
-    public void displayOptions() {
+    private void displayOptions() {
         System.out.println("1 - List Books");
         System.out.println("2 - Checkout Book");
+        System.out.println("3 - Return Book");
         System.out.println("q - Quit");
 
     }
 
-    public void displayBookList() {
+    private void displayBookList() {
         System.out.println("List of available books:");
         for (Book book: library.getAvailableBooks()) {
             System.out.println(book);
         }
     }
 
-    public void checkoutBook() {
+    private void checkoutBook() {
         System.out.print("Enter book code: ");
         Scanner in = new Scanner(System.in);
         String code = in.nextLine();
@@ -67,5 +71,13 @@ public class CommandLineInterface {
         } catch (Error e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private void returnBook() {
+        System.out.print("Enter book code: ");
+        Scanner in = new Scanner(System.in);
+        String code = in.nextLine();
+        library.returnBookByCode(code);
+        System.out.println("Thank you for returning the book.");
     }
 }
