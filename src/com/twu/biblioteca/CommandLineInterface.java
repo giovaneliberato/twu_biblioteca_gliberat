@@ -77,7 +77,12 @@ public class CommandLineInterface {
         System.out.print("Enter book code: ");
         Scanner in = new Scanner(System.in);
         String code = in.nextLine();
-        library.returnBookByCode(code);
-        System.out.println("Thank you for returning the book.");
+        try {
+            library.returnBookByCode(code);
+            System.out.println("Thank you for returning the book.");
+        } catch (Error e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
