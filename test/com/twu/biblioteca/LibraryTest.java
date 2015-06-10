@@ -13,13 +13,19 @@ public class LibraryTest {
     @Test
     public void testListAllBooks() {
         Library lib = createTestLibrary();
-        assertNotNull(lib.getBooks());
+        assertEquals(2, lib.getBooks().size());
     }
 
     @Test
     public void testListAllMovies() {
         Library lib = createTestLibrary();
-        assertNotNull(lib.getMovies());
+        assertEquals(2, lib.getMovies().size());
+    }
+
+    @Test
+    public void testListAllItems() {
+        Library lib = createTestLibrary();
+        assertEquals(4, lib.getItems().size());
     }
 
     @Test
@@ -69,7 +75,7 @@ public class LibraryTest {
         Library lib = createTestLibrary();
         Item book = lib.getItemByCode("1");
         book.setAvailable(false);
-        lib.returnBookByCode("1");
+        lib.returnItemByCode("1");
         assertTrue(book.isAvailable());
     }
 
@@ -79,7 +85,7 @@ public class LibraryTest {
         Item book = lib.getItemByCode("1");
         book.setAvailable(false);
         assertEquals(1, lib.getAvailableBooks().size());
-        lib.returnBookByCode("1");
+        lib.returnItemByCode("1");
         assertEquals(2, lib.getAvailableBooks().size());
     }
 

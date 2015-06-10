@@ -34,10 +34,7 @@ public class Library {
 
 
     public List<Item> getAvailableItems() {
-        List<Item> items = new ArrayList<Item>();
-        items.addAll(books);
-        items.addAll(movies);
-        return filterAvailableItems(items);
+        return filterAvailableItems(getItems());
     }
 
     public List<Item> getAvailableBooks() {
@@ -49,15 +46,15 @@ public class Library {
     }
 
     public Item getItemByCode(String code) {
-        for (Item book: books){
-            if (book.getCode().equals(code)){
-                return book;
+        for (Item item: getItems()){
+            if (item.getCode().equals(code)){
+                return item;
             }
         }
-        throw new Error("That book is not available.");
+        throw new Error("That item is not available.");
     }
 
-    public void returnBookByCode(String code) {
+    public void returnItemByCode(String code) {
         Item book = getItemByCode(code);
         book.setAvailable(true);
     }
@@ -76,4 +73,10 @@ public class Library {
         return availableItems;
     }
 
+    public List<Item> getItems() {
+        List<Item> items = new ArrayList<Item>();
+        items.addAll(books);
+        items.addAll(movies);
+        return items;
+    }
 }
