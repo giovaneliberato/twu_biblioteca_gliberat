@@ -11,9 +11,15 @@ import static org.junit.Assert.*;
 public class LibraryTest {
 
     @Test
-    public void testGetAllBooks() {
+    public void testListAllBooks() {
         Library lib = createTestLibrary();
         assertNotNull(lib.getBooks());
+    }
+
+    @Test
+    public void testListAllMovies() {
+        Library lib = createTestLibrary();
+        assertNotNull(lib.getMovies());
     }
 
     @Test
@@ -41,6 +47,24 @@ public class LibraryTest {
     }
 
     @Test
+    public void testListOnlyAvailableMovies() {
+        Library lib = createTestLibrary();
+        assertEquals(2, lib.getAvailableMovies().size());
+        lib.checkoutItemByCode("3");
+        assertEquals(1, lib.getAvailableMovies().size());
+    }
+
+    @Test
+    public void testListOnlyAvailableItems() {
+        Library lib = createTestLibrary();
+        assertEquals(4, lib.getAvailableItems().size());
+        lib.checkoutItemByCode("1");
+        lib.checkoutItemByCode("3");
+        assertEquals(2, lib.getAvailableItems().size());
+
+    }
+
+    @Test
     public void testReturnItem() {
         Library lib = createTestLibrary();
         Item book = lib.getItemByCode("1");
@@ -57,12 +81,6 @@ public class LibraryTest {
         assertEquals(1, lib.getAvailableBooks().size());
         lib.returnBookByCode("1");
         assertEquals(2, lib.getAvailableBooks().size());
-    }
-
-    @Test
-    public void testListAllMovies() {
-        Library lib = createTestLibrary();
-        assertNotNull(lib.getMovies());
     }
 
 
