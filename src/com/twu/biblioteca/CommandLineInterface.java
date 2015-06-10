@@ -66,7 +66,7 @@ public class CommandLineInterface {
         Scanner in = new Scanner(System.in);
         String code = in.nextLine();
         try {
-            library.checkoutBookByCode(code);
+            library.checkoutItemByCode(code);
             System.out.println("Thank You, enjoy the book!");
         } catch (Error e) {
             System.out.println(e.getMessage());

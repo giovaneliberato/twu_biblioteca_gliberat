@@ -9,15 +9,16 @@ public class Library {
     private List<Item> movies;
 
 
-    public Library(List<Item> books) {
+    public Library(List<Item> books, List<Item> movies) {
         this.books = books;
+        this.movies = movies;
     }
 
     public List<Item> getBooks() {
         return books;
     }
 
-    public void checkoutBookByCode(String code) {
+    public void checkoutItemByCode(String code) {
         Item book = getAvailableItemByCode(code);
         book.setAvailable(false);
     }
@@ -31,7 +32,7 @@ public class Library {
         throw new Error("That book is not available.");
     }
 
-    public Item getBookByCode(String code) {
+    public Item getItemByCode(String code) {
         for (Item book: books){
             if (book.getCode().equals(code)){
                 return book;
@@ -51,7 +52,7 @@ public class Library {
     }
 
     public void returnBookByCode(String code) {
-        Item book = getBookByCode(code);
+        Item book = getItemByCode(code);
         book.setAvailable(true);
     }
 
