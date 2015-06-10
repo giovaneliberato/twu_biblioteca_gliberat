@@ -18,6 +18,17 @@ public class Item {
         this.director = director;
     }
 
+    @Override
+    public String toString() {
+        String owner;
+        if (author != null)
+            owner = author;
+        else
+            owner = director;
+
+        return "Code: " + code + " | " + title + " | " + year + " | " + owner;
+    }
+
     public static Item createBook(String code, String title, String year, String author) {
         return new Item(code, title, year, author, null);
     }

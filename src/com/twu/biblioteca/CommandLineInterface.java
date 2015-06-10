@@ -35,6 +35,9 @@ public class CommandLineInterface {
             else if (option.equals("3")) {
                 returnBook();
             }
+            else if (option.equals("4")) {
+                displayMovieList();
+            }
             else if (option.equals("q")) {
                 break;
             }
@@ -50,6 +53,7 @@ public class CommandLineInterface {
         System.out.println("1 - List Books");
         System.out.println("2 - Checkout Book");
         System.out.println("3 - Return Book");
+        System.out.println("4 - List Movies");
         System.out.println("q - Quit");
 
     }
@@ -58,6 +62,13 @@ public class CommandLineInterface {
         System.out.println("List of available books:");
         for (Item book: library.getAvailableBooks()) {
             System.out.println(book);
+        }
+    }
+
+    private void displayMovieList() {
+        System.out.println("List of available movies:");
+        for (Item movie: library.getAvailableMovies()) {
+            System.out.println(movie);
         }
     }
 
