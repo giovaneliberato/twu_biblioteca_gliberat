@@ -5,24 +5,25 @@ import java.util.List;
 
 
 public class Library {
-    private List<Book> books;
+    private List<Item> books;
+    private List<Item> movies;
 
 
-    public Library(List<Book> books) {
+    public Library(List<Item> books) {
         this.books = books;
     }
 
-    public List<Book> getBooks() {
+    public List<Item> getBooks() {
         return books;
     }
 
     public void checkoutBookByCode(String code) {
-        Book book = getAvailableBookByCode(code);
+        Item book = getAvailableItemByCode(code);
         book.setAvailable(false);
     }
 
-    public Book getAvailableBookByCode(String code) {
-        for (Book book: getAvailableBooks()){
+    public Item getAvailableItemByCode(String code) {
+        for (Item book: getAvailableBooks()){
             if (book.getCode().equals(code)){
                 return book;
             }
@@ -30,8 +31,8 @@ public class Library {
         throw new Error("That book is not available.");
     }
 
-    public Book getBookByCode(String code) {
-        for (Book book: books){
+    public Item getBookByCode(String code) {
+        for (Item book: books){
             if (book.getCode().equals(code)){
                 return book;
             }
@@ -39,9 +40,9 @@ public class Library {
         throw new Error("That book is not available.");
     }
 
-    public List<Book> getAvailableBooks() {
-        List<Book> availableBooks = new ArrayList<Book>();
-        for (Book book: books) {
+    public List<Item> getAvailableBooks() {
+        List<Item> availableBooks = new ArrayList<Item>();
+        for (Item book: books) {
             if (book.isAvailable()) {
                 availableBooks.add(book);
             }
@@ -50,7 +51,13 @@ public class Library {
     }
 
     public void returnBookByCode(String code) {
-        Book book = getBookByCode(code);
+        Item book = getBookByCode(code);
         book.setAvailable(true);
     }
+
+    public List<Item> getMovies() {
+        return movies;
+    }
+
+
 }

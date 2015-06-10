@@ -56,7 +56,7 @@ public class CommandLineInterface {
 
     private void displayBookList() {
         System.out.println("List of available books:");
-        for (Book book: library.getAvailableBooks()) {
+        for (Item book: library.getAvailableBooks()) {
             System.out.println(book);
         }
     }

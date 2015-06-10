@@ -17,16 +17,16 @@ public class LibraryTest {
     }
 
     @Test
-    public void testGetBookByCode() {
+    public void testGetItemByCode() {
         Library lib = createTestLibrary();
-        Book book = lib.getAvailableBookByCode("1");
+        Item book = lib.getAvailableItemByCode("1");
         assertNotNull(book);
     }
 
     @Test
     public void testCheckoutBookByCode() {
         Library lib = createTestLibrary();
-        Book book = lib.getAvailableBookByCode("1");
+        Item book = lib.getAvailableItemByCode("1");
         assertTrue(book.isAvailable());
         lib.checkoutBookByCode("1");
         assertFalse(book.isAvailable());
@@ -43,7 +43,7 @@ public class LibraryTest {
     @Test
     public void testReturnBook() {
         Library lib = createTestLibrary();
-        Book book = lib.getBookByCode("1");
+        Item book = lib.getBookByCode("1");
         book.setAvailable(false);
         lib.returnBookByCode("1");
         assertTrue(book.isAvailable());
@@ -52,17 +52,24 @@ public class LibraryTest {
     @Test
     public void testReturnedBookAppearsOnList() {
         Library lib = createTestLibrary();
-        Book book = lib.getBookByCode("1");
+        Item book = lib.getBookByCode("1");
         book.setAvailable(false);
         assertEquals(1, lib.getAvailableBooks().size());
         lib.returnBookByCode("1");
         assertEquals(2, lib.getAvailableBooks().size());
     }
 
+    @Test
+    public void testListAllMovies() {
+        Library lib = createTestLibrary();
+        assertNotNull(lib.getMovies());
+    }
+
+
     private Library createTestLibrary() {
-        List<Book> books = new LinkedList<Book>();
-        books.add(new Book("1", "Book 1", "Author", "1985"));
-        books.add(new Book("2", "Book 2", "Author", "1985"));
+        List<Item> books = new LinkedList<Item>();
+        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
+        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
         return new Library(books);
     }
 }
