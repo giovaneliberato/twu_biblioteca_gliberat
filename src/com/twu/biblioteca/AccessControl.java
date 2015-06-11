@@ -4,6 +4,7 @@ import java.util.List;
 
 public class AccessControl {
     private List<User> users;
+    private User loggedUser;
 
     public AccessControl(List<User> users) {
         this.users = users;
@@ -13,6 +14,7 @@ public class AccessControl {
         User user = getUSerByLibraryNumber(libraryNumber);
         if (user.comparePassword(password)){
             user.setLogged(true);
+            loggedUser = user;
         } else {
             throw new Error("User not found.");
         }
@@ -25,5 +27,9 @@ public class AccessControl {
             }
         }
         return null;
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
     }
 }

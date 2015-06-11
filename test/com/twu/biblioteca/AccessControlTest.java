@@ -18,8 +18,9 @@ public class AccessControlTest {
         AccessControl ac = new AccessControl(users);
         ac.doLogin("000-0001", "password");
         assertTrue(user.isLogged());
-
     }
+
+
 
     @Test
     public void testGetUserByLibraryNumber() {
