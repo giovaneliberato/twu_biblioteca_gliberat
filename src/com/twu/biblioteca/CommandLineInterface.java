@@ -46,6 +46,12 @@ public class CommandLineInterface {
                 doLogin();
                 returnMovie();
             }
+            else if (option.equals("7")) {
+                doLogin();
+            }
+            else if (option.equals("8")) {
+                showUserInformation();
+            }
             else if (option.equals("q")) {
                 break;
             }
@@ -66,6 +72,10 @@ public class CommandLineInterface {
         System.out.println("4 - List Movies");
         System.out.println("5 - Checkout Movie");
         System.out.println("6 - Return Movie");
+        System.out.println("7 - Login");
+        if (accessControl.getLoggedUser() != null) {
+            System.out.println("8 - Show User Information");
+        }
         System.out.println("q - Quit");
     }
 
@@ -145,6 +155,10 @@ public class CommandLineInterface {
                 System.out.println("User not found.");
             }
         }
+    }
+
+    private void showUserInformation() {
+        System.out.println(accessControl.getLoggedUser());
     }
 
     private String getInput() {

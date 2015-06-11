@@ -16,8 +16,9 @@ public class BibliotecaApp {
         Library library = new Library(books, movies);
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("000-0001", "password"));
-        users.add(new User("000-0002", "password"));
+        User user1 = new User("000-0001", "password");
+        user1.updateProfile("Giovane", "g@example.com", "123456");
+        users.add(user1);
         AccessControl ac = new AccessControl(users);
 
         CommandLineInterface cli = new CommandLineInterface(library, ac);
