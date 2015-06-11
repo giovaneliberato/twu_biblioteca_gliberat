@@ -93,6 +93,16 @@ public class LibraryTest {
     }
 
     @Test
+    public void testReturnItemCleansCheckoutUser() {
+        User user = createTestUser();
+        Library lib = createTestLibrary();
+        Item item = lib.getAvailableItemByCode("1");
+        lib.checkoutItemByCode("1", user);
+        lib.returnItemByCode("1");
+        assertNull(item.getCheckoutUser());
+    }
+
+    @Test
     public void testReturnedItemAppearsOnList() {
         Library lib = createTestLibrary();
         Item book = lib.getItemByCode("1");

@@ -58,6 +58,7 @@ public class Library {
     public void returnItemByCode(String code) {
         Item book = getItemByCode(code);
         book.setAvailable(true);
+        book.setCheckoutUser(null);
     }
 
     public List<Item> getMovies() {
