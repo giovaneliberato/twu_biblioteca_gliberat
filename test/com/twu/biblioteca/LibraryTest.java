@@ -31,25 +31,28 @@ public class LibraryTest {
     @Test
     public void testListOnlyAvailableBooks() {
         Library lib = createTestLibrary();
+        User user = createTestUser();
         assertEquals(2, lib.getAvailableBooks().size());
-        lib.checkoutItemByCode("1");
+        lib.checkoutItemByCode("1", user);
         assertEquals(1, lib.getAvailableBooks().size());
     }
 
     @Test
     public void testListOnlyAvailableMovies() {
         Library lib = createTestLibrary();
+        User user = createTestUser();
         assertEquals(2, lib.getAvailableMovies().size());
-        lib.checkoutItemByCode("3");
+        lib.checkoutItemByCode("3", user);
         assertEquals(1, lib.getAvailableMovies().size());
     }
 
     @Test
     public void testListOnlyAvailableItems() {
         Library lib = createTestLibrary();
+        User user = createTestUser();
         assertEquals(4, lib.getAvailableItems().size());
-        lib.checkoutItemByCode("1");
-        lib.checkoutItemByCode("3");
+        lib.checkoutItemByCode("1", user);
+        lib.checkoutItemByCode("3", user);
         assertEquals(2, lib.getAvailableItems().size());
 
     }
@@ -64,10 +67,20 @@ public class LibraryTest {
     @Test
     public void testCheckoutItemByCode() {
         Library lib = createTestLibrary();
+        User user = createTestUser();
         Item book = lib.getAvailableItemByCode("1");
         assertTrue(book.isAvailable());
-        lib.checkoutItemByCode("1");
+        lib.checkoutItemByCode("1", user);
         assertFalse(book.isAvailable());
+    }
+
+    @Test
+    public void testItemCheckoutUser() {
+        User user = createTestUser();
+        Library lib = createTestLibrary();
+        Item item = lib.getAvailableItemByCode("1");
+        lib.checkoutItemByCode("1", user);
+        assertEquals(user, item.getCheckoutUser());
     }
 
     @Test
@@ -89,7 +102,6 @@ public class LibraryTest {
         assertEquals(2, lib.getAvailableBooks().size());
     }
 
-
     private Library createTestLibrary() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
@@ -98,5 +110,10 @@ public class LibraryTest {
         movies.add(Item.createMovie("3", "Movie 1", "1985", "Director"));
         movies.add(Item.createMovie("4", "Movie 2", "1985", "Director"));
         return new Library(books, movies);
+    }
+
+    private User createTestUser() {
+        return new User("000-0001", "password");
+
     }
 }

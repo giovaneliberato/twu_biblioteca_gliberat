@@ -7,6 +7,7 @@ public class Item {
     private String author;
     private String director;
     private String year;
+    private User checkoutUser;
 
     public Item() {}
 
@@ -49,19 +50,12 @@ public class Item {
         return code;
     }
 
-    public String getTitle() {
-        return title;
+    public User getCheckoutUser() {
+        return checkoutUser;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setCheckoutUser(User checkoutUser) {
+        this.checkoutUser = checkoutUser;
     }
 
-    public String getDirector() {
-        return director;
-    }
-
-    public String getYear() {
-        return year;
-    }
 }

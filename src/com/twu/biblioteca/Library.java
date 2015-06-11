@@ -18,9 +18,10 @@ public class Library {
         return books;
     }
 
-    public void checkoutItemByCode(String code) {
-        Item book = getAvailableItemByCode(code);
-        book.setAvailable(false);
+    public void checkoutItemByCode(String code, User checkoutUser) {
+        Item item = getAvailableItemByCode(code);
+        item.setAvailable(false);
+        item.setCheckoutUser(checkoutUser);
     }
 
     public Item getAvailableItemByCode(String code) {

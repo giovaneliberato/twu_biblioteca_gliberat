@@ -80,7 +80,7 @@ public class CommandLineInterface {
         System.out.print("Enter book code: ");
         String code = getInput();
         try {
-            library.checkoutItemByCode(code);
+            library.checkoutItemByCode(code, accessControl.getLoggedUser());
             System.out.println("Thank You, enjoy the book!");
         } catch (Error e) {
             System.out.println("That book is not available.");
@@ -109,7 +109,7 @@ public class CommandLineInterface {
         System.out.print("Enter movie code: ");
         String code = getInput();
         try {
-            library.checkoutItemByCode(code);
+            library.checkoutItemByCode(code, accessControl.getLoggedUser());
             System.out.println("Thank You, enjoy the movie!");
         } catch (Error e) {
             System.out.println("That movie is not available.");
@@ -132,7 +132,7 @@ public class CommandLineInterface {
             return;
         }
         while (true){
-            System.out.println("---Login---");
+            System.out.println("---Login---a");
             System.out.print("Enter your library code: ");
             String libraryCode = getInput();
             System.out.print("Enter your password: ");
