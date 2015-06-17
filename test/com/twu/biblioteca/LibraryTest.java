@@ -14,8 +14,8 @@ public class LibraryTest {
     public void testListAllBooks() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
         Library lib = new Library(books, movies);
         assertEquals(2, lib.getBooks().size());
     }
@@ -24,8 +24,8 @@ public class LibraryTest {
     public void testListAllMovies() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        movies.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        movies.add(Item.createBook("2", "Book 2", "1985", "Author"));
+        movies.add(new Book("1", "Book 1", "1985", "Author"));
+        movies.add(new Book("2", "Book 2", "1985", "Author"));
         Library lib = new Library(books, movies);
         assertEquals(2, lib.getMovies().size());
     }
@@ -34,10 +34,10 @@ public class LibraryTest {
     public void testListAllItems() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
-        movies.add(Item.createMovie("3", "Movie 1", "1985", "Director"));
-        movies.add(Item.createMovie("4", "Movie 2", "1985", "Director"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
+        movies.add(new Movie("3", "Movie 1", "1985", "Director"));
+        movies.add(new Movie("4", "Movie 2", "1985", "Director"));
         Library lib = new Library(books, movies);
         assertEquals(4, lib.getItems().size());
     }
@@ -46,8 +46,8 @@ public class LibraryTest {
     public void testListOnlyAvailableBooks() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
         Library lib = new Library(books, movies);
         assertEquals(2, lib.getAvailableBooks().size());
 
@@ -60,8 +60,8 @@ public class LibraryTest {
     public void testListOnlyAvailableMovies() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        movies.add(Item.createMovie("1", "Movie 1", "1985", "Director"));
-        movies.add(Item.createMovie("2", "Movie 2", "1985", "Director"));
+        movies.add(new Movie("1", "Movie 1", "1985", "Director"));
+        movies.add(new Movie("2", "Movie 2", "1985", "Director"));
         Library lib = new Library(books, movies);
         assertEquals(2, lib.getAvailableMovies().size());
 
@@ -74,10 +74,10 @@ public class LibraryTest {
     public void testListOnlyAvailableItems() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
-        movies.add(Item.createMovie("3", "Movie 1", "1985", "Director"));
-        movies.add(Item.createMovie("4", "Movie 2", "1985", "Director"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
+        movies.add(new Movie("3", "Movie 1", "1985", "Director"));
+        movies.add(new Movie("4", "Movie 2", "1985", "Director"));
         Library lib = new Library(books, movies);
 
         User user = new User("000-0001", "password");
@@ -92,7 +92,7 @@ public class LibraryTest {
     public void testGetItemByCode() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        Item book = Item.createBook("1", "Book 1", "1985", "Author");
+        Item book = new Book("1", "Book 1", "1985", "Author");
         books.add(book);
         Library lib = new Library(books, movies);
         Item item = lib.getAvailableItemByCode("1");
@@ -103,8 +103,8 @@ public class LibraryTest {
     public void testCheckoutItemByCode() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
-        movies.add(Item.createMovie("2", "Movie 1", "1985", "Director"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        movies.add(new Movie("Movie 1", "2", "1985", "Director"));
         Library lib = new Library(books, movies);
         User user = new User("000-0001", "password");
 
@@ -118,7 +118,7 @@ public class LibraryTest {
     public void testItemCheckoutUser() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(Item.createBook("1", "Book 1", "1985", "Author"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
         Library lib = new Library(books, movies);
         User user = new User("000-0001", "password");
 
@@ -131,7 +131,7 @@ public class LibraryTest {
     public void testReturnItem() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        Item book = Item.createBook("1", "Book 1", "1985", "Author");
+        Item book = new Book("1", "Book 1", "1985", "Author");
         books.add(book);
         Library lib = new Library(books, movies);
         book.setAvailable(false);
@@ -143,7 +143,7 @@ public class LibraryTest {
     public void testReturnItemCleansCheckoutUser() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        Item book = Item.createBook("1", "Book 1", "1985", "Author");
+        Item book = new Book("1", "Book 1", "1985", "Author");
         books.add(book);
         User user = new User("000-0001", "password");
         Library lib = new Library(books, movies);
@@ -157,9 +157,9 @@ public class LibraryTest {
     public void testReturnedItemAppearsOnList() {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        Item book = Item.createBook("1", "Book 1", "1985", "Author");
+        Item book = new Book("1", "Book 1", "1985", "Author");
         books.add(book);
-        books.add(Item.createBook("2", "Book 2", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
         Library lib = new Library(books, movies);
         book.setAvailable(false);
         assertEquals(1, lib.getAvailableBooks().size());
