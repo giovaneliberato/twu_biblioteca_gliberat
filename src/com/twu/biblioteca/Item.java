@@ -9,9 +9,7 @@ public class Item {
     private String year;
     private User checkoutUser;
 
-    public Item() {}
-
-    protected Item(String code, String title, String year, String author, String director) {
+    private Item(String code, String title, String year, String author, String director) {
         this.code = code;
         this.title = title;
         this.author = author;

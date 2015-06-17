@@ -25,10 +25,11 @@ public class AccessControlTest {
     @Test
     public void testGetUserByLibraryNumber() {
         List<User> users = new ArrayList<User>();
-        users.add(new User("000-0001", "password"));
+        User targetUser = new User("000-0001", "password");
+        users.add(targetUser);
         users.add(new User("000-0002", "password"));
         AccessControl ac = new AccessControl(users);
-        assertEquals(users.get(0) ,ac.getUSerByLibraryNumber("000-0001"));
+        assertEquals(targetUser, ac.getUserByLibraryNumber("000-0001"));
     }
 
 }

@@ -11,7 +11,7 @@ public class AccessControl {
     }
 
     public void doLogin(String libraryNumber, String password) {
-        User user = getUSerByLibraryNumber(libraryNumber);
+        User user = getUserByLibraryNumber(libraryNumber);
         if (user.comparePassword(password)){
             user.setLogged(true);
             loggedUser = user;
@@ -20,7 +20,7 @@ public class AccessControl {
         }
     }
 
-    public User getUSerByLibraryNumber(String libraryNumber) {
+    public User getUserByLibraryNumber(String libraryNumber) {
         for (User user: users) {
             if (user.getLibraryNumber().equals(libraryNumber)){
                 return user;
