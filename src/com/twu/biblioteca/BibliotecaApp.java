@@ -9,10 +9,10 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         List<Item> books = new LinkedList<Item>();
         List<Item> movies = new LinkedList<Item>();
-        books.add(new Book("Book 1", "1", "1985", "Author"));
-        books.add(new Book("Book 2", "2", "1985", "Author"));
-        movies.add(new Movie("Movie 1", "3", "1985", "Director"));
-        movies.add(new Movie("Movie 2", "4", "1985", "Director"));
+        books.add(new Book("1", "Book 1", "1985", "Author"));
+        books.add(new Book("2", "Book 2", "1985", "Author"));
+        movies.add(new Movie("3", "Movie 1", "1985", "Director"));
+        movies.add(new Movie("4", "Movie 2", "1985", "Director"));
         Library library = new Library(books, movies);
 
         List<User> users = new ArrayList<User>();
