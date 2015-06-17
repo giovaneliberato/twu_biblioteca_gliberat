@@ -40,4 +40,9 @@ public abstract class Item {
     public String getYear() {
         return year;
     }
+
+    public void returnItem(){
+        setAvailable(true);
+        setCheckoutUser(null);
+    };
 }
